@@ -21,7 +21,7 @@ node.js server of version 0.12.2+ and Express 4.x
 * 4. After editing refresh your browser to see the changes.
 
 ** Building (only required for production)
-* 1. Install Sencha CMD from https://www.sencha.com/products/extjs/cmd-download/
+* 1. Install Sencha CMD 5.1.2.52 from http://cdn.sencha.com/cmd/5.1.2.52/SenchaCmd-5.1.2.52-osx.app.zip (Newest versions of Sencha CMD wont work and will break codebase)
 * 2. Go to ./client/extjs
 * 3. run `sencha app build`
 * 4. It will generate ./client/extjs/build/Demo
