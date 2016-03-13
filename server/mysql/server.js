@@ -110,6 +110,11 @@ app.post(directConfig.classRouteUrl, function(req, res) {
 //Dev
 if (app.get('env') === 'development') {
     app.use(errorHandler({ dumpExceptions: true, showStack: true }));
+
+    var devRoot = require('path').resolve(__dirname,"../","../", "client","extjs");
+    console.log(devRoot);
+    app.use(express.static(devRoot));
+
 }
 
 global.App.env = app.get('env');
