@@ -2,10 +2,10 @@
 This repository contains examples on how to use Ext.Direct in conjunction with node.js server side using MySQL
 
 ### Client
-New examples expect ExtJS 5.1.0
+ExtJS 5.1.0 (Check docs in http://docs.sencha.com/extjs/5.1.0/)
 
 ### Server
-node.js server of version 0.12.2+ and Express 4.x
+Node.js server of version 0.12.2+ and Express 4.x
 (check your NodeJS version using `node -v` if its not 0.12.* use this tool https://github.com/tj/n, get it working by running `sudo npm install -g n` then running `n 0.12.2` that will download and switch to NodeJS 0.12.2)
 
 ### Steps to get this working
@@ -20,7 +20,7 @@ node.js server of version 0.12.2+ and Express 4.x
 * 3. Edit files only inside ./client/extjs/app
 * 4. After editing refresh your browser to see the changes.
 
-** Building (only required for production)
+### Building (only required for production)
 * 1. Install Sencha CMD 5.1.2.52 from http://cdn.sencha.com/cmd/5.1.2.52/SenchaCmd-5.1.2.52-osx.app.zip (Newest versions of Sencha CMD wont work and will break codebase)
 * 2. Go to ./client/extjs
 * 3. run `sencha app build`
