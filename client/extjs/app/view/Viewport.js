@@ -37,6 +37,10 @@ Ext.define('Demo.view.Viewport', {
             {
                 xtype:'tree-actions',
                 disabled: true
+            },
+            {
+                xtype:'grid-actions',
+                disabled: true
             }
         ]
     }]

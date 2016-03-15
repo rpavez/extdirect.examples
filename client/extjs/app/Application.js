@@ -11,7 +11,7 @@ Ext.define('Demo.Application', {
     requires:[
         'Ext.direct.*', 'Ext.data.proxy.Direct'
     ],
-    
+
     views: [
         'MethodCall',
         'FormActions',
@@ -19,7 +19,8 @@ Ext.define('Demo.Application', {
         'FormUpload',
         'TreeActions',
         'Cookies',
-        'Metadata'
+        'Metadata',
+        'Users'
     ],
 
     controllers: [
