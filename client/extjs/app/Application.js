@@ -28,12 +28,14 @@ Ext.define('Demo.Application', {
     ],
 
     models:[
-        'TodoItem'
+        'TodoItem',
+        'UserItem'
     ],
 
     stores: [
         'Todo',
-        'Tree'
+        'Tree',
+        'User'
     ],
 
     launch: function(){
@@ -62,12 +64,12 @@ Ext.define('Demo.Application', {
                     function(result, event) {
                         var tabs = viewport.down('tabpanel').items.items;
 
-                        if(result.auth) {
+                        //if(result.auth) {
                             // enable other tabs
                             Ext.each(tabs, function(cmp){
                                 cmp.enable();
                             });
-                        }
+                        //}
                     }
                 );
 

@@ -1,20 +1,22 @@
+// Aquí hice trampa y usé el template del TodoGrid!
+
 Ext.define('Demo.controller.Main', {
     extend: 'Ext.app.Controller',
 
     refs: [
         {
             ref: 'editor',
-            selector: 'grid-actions #todoForm'
+            selector: 'grid-actions #userForm'
         },
         {
-            ref:'todoGrid',
-            selector:'grid-actions #todoGrid'
+            ref:'userGrid',
+            selector:'grid-actions #userGrid'
         }
     ],
 
     init: function(application) {
         this.control({
-            'grid-actions #todoGrid': {
+            'grid-actions #userGrid': {
                 itemclick: this.onTodoGridItemClick
             },
 
@@ -22,10 +24,10 @@ Ext.define('Demo.controller.Main', {
                 click: this.buttonActions
             },
 
-            'grid-actions #todoGrid toolbar #filter': {
+            'grid-actions #userGrid toolbar #filter': {
                 reset: function() { //not the best practice, please avoid if possible! this only shows that you can use dashes for event names.
                     //we can define logic also here
-                    Ext.getStore('Todo').clearFilter();
+                    Ext.getStore('User').clearFilter();
                 }
             }
         });
@@ -40,6 +42,7 @@ Ext.define('Demo.controller.Main', {
             case 'updateRecord': me.onUpdateBtnClick(); break;
             case 'removeRecord': me.onRemoveBtnClick(); break;
             case 'loadStore': me.loadStore(); break;
+            case 'userStore': me.userStore(); break;
             case 'filterStore': me.filterStore(); break;
             default: break;
         }
@@ -49,10 +52,14 @@ Ext.define('Demo.controller.Main', {
         this.getTodoGrid().getStore().reload();
     },
 
+    userStore:function(){
+        this.getUserGrid().getStore().reload();
+    },
+
     filterStore: function() {
         var field = this.getTodoGrid().down('toolbar #filter'),
             value = field.getValue(),
-            store = Ext.getStore('Todo');
+            store = Ext.getStore('User');
 
         if(value) {
             store.clearFilter(true);
@@ -61,13 +68,37 @@ Ext.define('Demo.controller.Main', {
     },
 
     onTodoGridItemClick: function(dataview, record, item, index, e, eOpts) {
-        var form = this.getEditor();
+        /*var form = this.getEditor();
         form.getForm().loadRecord(record);
-        form.enable();
+        form.enable();*/
+
+        //NECESITO QUE AL CLICLEAR UN ITEM EL STORE DEVUELVA LA DATA DEL ITEM
+
+        Ext.create('Ext.window.Window', {
+        title: 'Usuario',
+        height: 200,
+        width: 400,
+        layout: 'fit',
+        items: {
+            xtype: 'grid',
+            border: false,
+            columns: [
+                {
+                    header: 'Username', 
+                    dataIndex: 'username',
+                    text: 'HOLA'
+                },
+                {
+                    header:'Password',
+                    dataIndex: 'password'
+                }],
+            store: 'User'
+        }
+}).show();
     },
 
     onInsertBtnClick: function() {
-        var store = Ext.getStore('Todo');
+        var store = Ext.getStore('User');
         var record = Ext.create('Demo.model.TodoItem', {
             text: 'New todo action ' + +(store.getCount() + 1),
             complete: 0
@@ -76,7 +107,7 @@ Ext.define('Demo.controller.Main', {
             callback:function(records, operation, success) {
                 //we add to store only after successful insertion at the server-side
                 if(success) {
-                    Ext.getStore('Todo').add(records);
+                    Ext.getStore('User').add(records);
                 } else {
                     console.log('Failure to add record: ', arguments);
                 }
@@ -91,7 +122,7 @@ Ext.define('Demo.controller.Main', {
         } else {
             var form = me.getEditor().getForm(),
                 record = form.getRecord(),
-                store = Ext.getStore('Todo');
+                store = Ext.getStore('User');
 
             me.getTodoGrid().getSelectionModel().deselect(record);
 

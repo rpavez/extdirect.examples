@@ -100,3 +100,17 @@ INSERT INTO `satask` (`id`, `description`, `dueDate`, `priority`, `details`, `cr
 (24, 'Create databases on the history server.', '8/28/2011', 'Normal', '<b>sed<\\/b> quia nobis.', '10/25/2014', '1/16/2011', 'hdiaz'),
 (838, 'Monitor system performance and adjust hardware as required', '11/12/2009', 'Low', '<b>pariatur<\\/b> assumenda.', '12/1/2010', '1/17/2006', 'ryoung'),
 (164, 'Database backup and maintenance', '7/13/2013', 'Low', '<b>eum<\\/b> et.', '1/3/2012', '8/22/2010', 'jallen');
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+INSERT INTO `user` (`username`,`password`) VALUES
+(`snuuper`, `password1`),
+(`snuuper2`, `password2`);
+
+--
+-- Dumping data for table `satodoitem`

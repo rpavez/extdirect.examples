@@ -12,9 +12,9 @@ var Login  = {
         var username = params.username,
             password = params.password;
 
-        // console.log(sessionID);
-        // console.log(req);
-        // console.log(res);
+        console.log(sessionID);
+        console.log(req);
+        console.log(res);
 
         /*
          You have full access to all request properties
